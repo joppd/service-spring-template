@@ -1,16 +1,19 @@
 package com.example.servicetemplate;
 
+import com.fasterxml.jackson.core.JsonProcessingException;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
 @RestController
 public class RestRouter {
 
-    @GetMapping("/mirror")
-    public String Response(String args)
+    @PostMapping("/mirror")
+    public String Response(@RequestBody String args) throws JsonProcessingException
     {
         System.out.println(args);
-        String response = "{\"response_value\":\"hello world\" }";
+        String response = args;
         return response;
     }
 }
